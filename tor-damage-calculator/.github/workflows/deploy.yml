@@ -19,13 +19,13 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 21
 
       - name: Install dependencies
         run: npm install
 
       - name: Build Angular app
-        run: npm run build -- --configuration production --base-href=/damage-calculator/
+        run: npm run build -- --configuration production --base-href=/tor-damage-calculator/
 
       - name: Deploy to GitHub Pages
-        run: npx angular-cli-ghpages --dir=dist/damage-calculator
+        run: npx angular-cli-ghpages --dir=dist/tor-damage-calculator
