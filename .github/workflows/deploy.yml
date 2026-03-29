@@ -1,31 +1,25 @@
-name: Deploy Angular to GitHub Pages
+ame: Deploy to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
-
-permissions:
-  contents: write
+    branches: ['main']
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
+      - name: Checkout
+        uses: actions/checkout@v6
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: 21
-
-      - name: Install dependencies
+          node-version: '24.x'
+      - name: Install
         run: npm install
-
-      - name: Build Angular app
-        run: npm run build -- --configuration production --base-href=/tor-damage-calculator/
-
-      - name: Deploy to GitHub Pages
-        run: npx angular-cli-ghpages --dir=dist/tor-damage-calculator
+      - name: Build
+        run: npm run build
+      - name: Deploy
+        run: npm run deploy
+        env:
+          CI: true
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
