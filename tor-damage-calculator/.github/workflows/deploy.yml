@@ -25,7 +25,7 @@ jobs:
         run: npm install
 
       - name: Build Angular app
-        run: npm run build -- --configuration production --base-href=/my-angular-gh-pages/
+        run: npm run build -- --configuration production --base-href=/damage-calculator/
 
       - name: Deploy to GitHub Pages
-        run: npx angular-cli-ghpages --dir=dist/my-angular-gh-pages
+        run: npx angular-cli-ghpages --dir=dist/damage-calculator
