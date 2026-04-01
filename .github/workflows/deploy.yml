@@ -29,7 +29,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist/${{ github.event.repository.name }}/browser # Check your angular.json output path
+          path: dist/browser
 
   deploy:
     environment:
