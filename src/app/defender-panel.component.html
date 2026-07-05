@@ -1,0 +1,119 @@
+<mat-card class="panel">
+  <mat-card-header>
+    <mat-card-title>Defender</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form [formGroup]="defenderForm" cl>
+
+      <mat-expansion-panel class="sub-panel" [expanded]="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="sub-title">Defender Stats</mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="sub-content">
+
+      <mat-form-field appearance="outline">
+        <mat-label>Defender STR</mat-label>
+        <input matInput type="number" formControlName="defenderStr">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Defender VIT</mat-label>
+        <input matInput type="number" formControlName="defenderVit">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Weapon Skill Rank (Defender)</mat-label>
+        <input matInput type="number" formControlName="defenderWeaponSkillRank">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Defender Level</mat-label>
+        <input matInput type="number" formControlName="defenderLevel">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Defender class</mat-label>
+        <mat-select formControlName="defenderClass">
+          <mat-option *ngFor="let type of classTypes" [value]="type">{{ type }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Defender element</mat-label>
+        <mat-select formControlName="defenderElement">
+          <mat-option *ngFor="let type of elementTypes" [value]="type">{{ type }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      </div>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="sub-panel" [expanded]="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="sub-title">Equipment Stats</mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="sub-content">
+
+      <mat-form-field appearance="outline">
+        <mat-label>Physical Resistance</mat-label>
+        <input matInput type="number" formControlName="physicalResistance">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Elemental Resistance</mat-label>
+        <input matInput type="number" formControlName="elementalResistance">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Racial Resistance</mat-label>
+        <input matInput type="number" formControlName="racialResistance">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Equipment DEF</mat-label>
+        <input matInput type="number" formControlName="equipmentDef">
+      </mat-form-field>
+
+        </div>
+      </mat-expansion-panel>
+
+
+      <mat-expansion-panel class="sub-panel">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="sub-title">Status Effects</mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="sub-content">
+
+      <mat-checkbox formControlName="ogreSetBonusDefender">Ogre Set Bonus</mat-checkbox>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Steelstance</mat-label>
+        <mat-select formControlName="steelstance">
+          <mat-option *ngFor="let option of steelstanceOptions" [value]="option">{{ option }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+      <mat-checkbox formControlName="fortify">Fortify</mat-checkbox>
+
+      <mat-checkbox formControlName="attuned">Attuned</mat-checkbox>
+
+      <mat-checkbox formControlName="breach">Breach</mat-checkbox>
+
+      <mat-checkbox formControlName="averse">Averse</mat-checkbox>
+
+      <mat-checkbox formControlName="petrified">Petrified</mat-checkbox>
+
+      <mat-checkbox formControlName="frightenedDefender">Frightened</mat-checkbox>
+
+      <mat-checkbox formControlName="phalanxGordianLock">Phalanx / Gordian Lock</mat-checkbox>
+
+      <mat-checkbox formControlName="dragonScale">Dragon Scale</mat-checkbox>
+
+              </div>
+      </mat-expansion-panel>
+
+    </form>
+  </mat-card-content>
+</mat-card>

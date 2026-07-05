@@ -1,0 +1,190 @@
+<mat-card class="panel">
+  <mat-card-header>
+    <mat-card-title>Attacker</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form [formGroup]="attackerForm">
+
+      <!-- ATTACKER STATS SUB-PANEL -->
+      <mat-expansion-panel class="sub-panel" [expanded]="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="sub-title">Attacker Stats</mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="sub-content">
+
+          <mat-form-field appearance="outline">
+            <mat-label>Physical Action Type</mat-label>
+            <mat-select formControlName="physicalActionType">
+              <mat-option *ngFor="let type of actionTypes" [value]="type">{{ type }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Weapon Type</mat-label>
+            <mat-select formControlName="weaponType">
+              <mat-option *ngFor="let wp of availableWeaponTypes" [value]="wp">{{ wp }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" *ngIf="finisherList.length > 0">
+            <mat-label>Finisher</mat-label>
+            <mat-select formControlName="selectedFinisher">
+              <mat-option value="">None</mat-option>
+              <mat-option *ngFor="let finisher of finisherList" [value]="finisher.name">
+                {{ finisher.name }} (ATK {{ finisher.atkBonus }}{{ finisher.element ? ', ' + finisher.element : '' }}{{ finisher.hits > 1 ? ', ' + finisher.hits + ' hits' : '' }})
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>1-Hander + Offhand</mat-label>
+            <input matInput type="text" formControlName="oneHanderOffhand">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Attacker STR</mat-label>
+            <input matInput type="number" formControlName="attackerStr">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Attacker DEX</mat-label>
+            <input matInput type="number" formControlName="attackerDex">
+          </mat-form-field>
+          
+          <mat-form-field appearance="outline">
+            <mat-label>Attacker class</mat-label>
+            <mat-select formControlName="attackerClass">
+              <mat-option *ngFor="let type of classTypes" [value]="type">{{ type }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Attacker Level</mat-label>
+            <input matInput type="number" formControlName="attackerLevel">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Attacker element</mat-label>
+            <mat-select formControlName="attackerElement">
+              <mat-option *ngFor="let type of elementTypes" [value]="type">{{ type }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        </div>
+      </mat-expansion-panel>
+
+      <!-- WEAPON STATS SUB-PANEL -->
+      <mat-expansion-panel class="sub-panel" [expanded]="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="sub-title">Equipment Stats</mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="sub-content">
+
+          <mat-form-field appearance="outline">
+            <mat-label>Weapon STR</mat-label>
+            <input matInput type="number" step="0.1" formControlName="weaponStr">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Weapon DEX</mat-label>
+            <input matInput type="number" step="0.1" formControlName="weaponDex">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Weapon Skill Rank</mat-label>
+            <input matInput type="number" formControlName="weaponSkillRank">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Weapon ATK</mat-label>
+            <input matInput type="number" formControlName="weaponAtk">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Jewelry ATK</mat-label>
+            <input matInput type="number" formControlName="jewelryAtk">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Elemental Shot ATK</mat-label>
+            <input matInput type="number" formControlName="elementalShotAtk">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Physical Damage Bonus</mat-label>
+            <input matInput type="number" formControlName="physicalDamageBonus">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Elemental Damage Bonus</mat-label>
+            <input matInput type="number" formControlName="elementalDamageBonus">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Racial Damage Bonus</mat-label>
+            <input matInput type="number" formControlName="racialDamageBonus">
+          </mat-form-field>
+
+
+        </div>
+      </mat-expansion-panel>
+
+      <!-- STATUS SUB-PANEL -->
+      <mat-expansion-panel class="sub-panel">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="sub-title">Status</mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="sub-content">
+
+          <mat-form-field appearance="outline">
+            <mat-label>Prevailing Elem Bonus</mat-label>
+            <input matInput type="number" formControlName="prevailingElemBonus">
+          </mat-form-field>
+
+          <mat-checkbox formControlName="ogreSetBonus">Ogre Set Bonus</mat-checkbox>
+
+          <mat-checkbox formControlName="strengthen">Strengthen</mat-checkbox>
+
+          <mat-checkbox formControlName="frightened">Frightened</mat-checkbox>
+
+          <mat-checkbox formControlName="weaken">Weaken</mat-checkbox>
+
+          <mat-checkbox formControlName="jijyglaSetBonus">Ji'ygla's Set Bonus</mat-checkbox>
+
+          <mat-checkbox formControlName="criticalHit">Critical Hit</mat-checkbox>
+
+          <mat-checkbox formControlName="physUpCard">Phys Up Card</mat-checkbox>
+
+          <mat-checkbox formControlName="bane">Bane</mat-checkbox>
+
+          <mat-checkbox formControlName="slayer">Slayer</mat-checkbox>
+
+          <mat-checkbox formControlName="sanguineAssault">Sanguine Assault</mat-checkbox>
+
+          <mat-checkbox formControlName="berserk">Berserk</mat-checkbox>
+
+          <mat-checkbox formControlName="mightyStrike">Mighty Strike</mat-checkbox>
+
+          <mat-checkbox formControlName="antiUndead">Anti-Undead</mat-checkbox>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Pincer Rank</mat-label>
+            <mat-select formControlName="pincerRank">
+              <mat-option *ngFor="let rank of pincerRanks" [value]="rank">{{ rank }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Counter Rank</mat-label>
+            <mat-select formControlName="counterRank">
+              <mat-option *ngFor="let rank of counterRanks" [value]="rank">{{ rank }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        </div>
+      </mat-expansion-panel>
+
+    </form>
+  </mat-card-content>
+</mat-card>

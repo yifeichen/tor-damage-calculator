@@ -1,0 +1,33 @@
+.panel {
+  flex: 1;
+  min-width: 300px;
+}
+
+.form {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.sub-panel {
+  margin-bottom: 16px;
+}
+
+.sub-title {
+  font-size: 1.1em;
+  font-weight: 500;
+  color: #666;
+}
+
+.sub-content {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  flex-wrap: wrap;
+}
+
+.form mat-form-field,
+.form mat-checkbox,
+.form mat-select {
+  flex: 0 1 calc(50% - 8px);
+}
